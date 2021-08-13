@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-
+const dotenv = require("dotenv").config();
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-advay:test-123@cluster0.nfemt.mongodb.net/todolistDB?retryWrites=true&w=majority", {
+mongoose.connect(`mongodb+srv://${process.env.username}:${process.env.password}@cluster0.nfemt.mongodb.net/todolistDB?retryWrites=true&w=majority`, {
     useNewUrlParser: true
 });
 
